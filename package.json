@@ -35,9 +35,12 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "express": "^4.17.1",
     "font-awesome": "^4.7.0",
+    "install": "^0.12.2",
     "mint-ui": "^2.2.13",
     "vue": "^2.6.10",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.6"
   }
 }
