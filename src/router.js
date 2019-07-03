@@ -9,6 +9,9 @@ import shopcarContainer from './components/tabbar/shopcarContainer.vue';
 
 import searchContainer from './components/tabbar/searchContainer.vue';
 
+import newsList from './components/news/newsList.vue'
+
+import newsInfo from './components/news/newsInfo.vue'
 
 
 
@@ -20,7 +23,11 @@ var router = new VueRouter({
         { path:'/home', component: homeContainer },
         { path:'/member', component: memberContainer },
         { path:'/shopcar', component: shopcarContainer },
-        { path:'/search', component: searchContainer }
+        { path:'/search', component: searchContainer },
+        { path:'/home/newsList', component: newsList },
+        // 如果有数据 newsInfo 根据 id 来创建对应路由可以这么写
+        // { path:'/home/newsInfo:id', component: newsInfo },
+        { path:'/home/newsInfo', component: newsInfo }
     ],
     // 覆盖默认的路由高亮的类，默认的类叫 router-link-active
     linkActiveClass:'mui-active'
