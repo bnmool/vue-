@@ -42,7 +42,7 @@
 
 
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-                <router-link to="#">
+                <router-link to="/home/photolist">
                     <img src="../../img/menu2.png" alt="">
                     <div class="mui-media-body">图片分享</div>
                 </router-link>
@@ -50,7 +50,7 @@
 
 
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-                <router-link to="#">
+                <router-link to="/home/goodslist">
                     <img src="../../img/menu3.png" alt="">
                     <div class="mui-media-body">商品购买</div>
                 </router-link>
@@ -122,16 +122,16 @@
             border: none;
 
             img {
-                width: 60px;
-                height: 60px;
+                width: 40px;
+                height: 40px;
             }
 
             .mui-table-view-cell {
                 border: none;
 
                 .mui-media-body {
-                    font-size: 20px;
-                    line-height: 20px;
+                    font-size: 16px;
+                    line-height: 16px;
                     height: 24px;
                 }
             }

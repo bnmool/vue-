@@ -54,6 +54,9 @@
 
 
     html,body{
+        .mint-header{
+            z-index: 10;
+        }
         .app-container{
             padding-top: 40px;
             overflow-x: hidden;
