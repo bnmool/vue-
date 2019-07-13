@@ -2,33 +2,20 @@
 
     <div>
         <!-- 轮播图区域 -->
-        <mt-swipe :auto="4000">
-            <!-- 在组组件中使用 v-for 循环的话，一定要使用 key -->
-            <!-- 有数据可以这么写 -->
-            <!--<mt-swipe-item v-for="item in lbList" :key="item.url">-->
-            <!--<img :src="item.img" alt="">-->
-            <!--</mt-swipe-item>-->
-
-            <mt-swipe-item>
-
-                <img src="../../img/1.jpg" alt="">
-
-            </mt-swipe-item>
+        <!-- 抽离后通过 props 传递的 lbList 数组需要进行数据绑定，所以这么写 -->
+        <!--<swiper :lbList="lbList"></swiper>-->
+        <!-- 由于没有数据所以这么写 -->
+        <swiper :isfull="true"></swiper>
 
 
-            <mt-swipe-item>
-
-                <img src="../../img/2.jpg" alt="">
-
-            </mt-swipe-item>
-
-            <mt-swipe-item>
-
-                <img src="../../img/3.jpg" alt="">
-
-            </mt-swipe-item>
-
-        </mt-swipe>
+        <!-- 未抽离的时候有数据的写法 -->
+        <!--<mt-swipe :auto="4000">-->
+            <!--&lt;!&ndash; 在组组件中使用 v-for 循环的话，一定要使用 key &ndash;&gt;-->
+            <!--&lt;!&ndash; 有数据可以这么写 &ndash;&gt;-->
+            <!--&lt;!&ndash;<mt-swipe-item v-for="item in lbList" :key="item.url">&ndash;&gt;-->
+            <!--&lt;!&ndash;<img :src="item.img" alt="">&ndash;&gt;-->
+            <!--&lt;!&ndash;</mt-swipe-item>&ndash;&gt;-->
+        <!--</mt-swipe>-->
 
 
         <!-- 九宫格改成六宫格 -->
@@ -93,29 +80,6 @@
 <style lang="less" scoped>
 
     div {
-        .mint-swipe {
-            height: 300px;
-
-            .mint-swipe-item {
-                &:nth-child(1) {
-                    background: #00ccff;
-                }
-
-                &:nth-child(2) {
-                    background: #00cc00;
-                }
-
-                &:nth-child(3) {
-                    background: #ffcc33;
-                }
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-
-            }
-        }
 
         .mui-grid-view.mui-grid-9 {
             background: #fff;
@@ -148,6 +112,8 @@
 
     // 导入 mint-ui 组件
     import {Toast} from 'mint-ui';
+    // 导入轮播图组件
+    import swiper from '../subcomponents/swiper.vue'
 
     export default {
         data() {
@@ -177,6 +143,9 @@
                 });
             }
         },
+        components:{
+            swiper:swiper,
+        }
     }
 
 </script>
