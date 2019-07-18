@@ -46,7 +46,7 @@
                 <div class="mui-card-content-inner">
                     <p class="price">
                         市场价：
-                        <del>￥2399</del>&nbsp;&nbsp;销售价：<span class="now_price">￥2199</span>
+                        <del>￥{{ goodsinfo.old_price }}</del>&nbsp;&nbsp;销售价：<span class="now_price">￥{{ goodsinfo.sell_price }}</span>
                     </p>
                     <p>购买数量：
                         <numbox @getcount="getSelectedCount" :max="goodsinfo.stock_quantity"></numbox>
@@ -104,13 +104,17 @@
             return {
                 nowTime: new Date(),
                 // 将路由参数对象中的 id 挂载到 data 上，方便后期调用
-                id: this.$route.params.id,
+                // id: this.$route.params.id,
+                id: 1,
                 // 轮播数据
                 lunbotu: [],
                 // 商品信息数据
                 goodsinfo: {
                     goods_no:'SDKJ89LM7',
-                    stock_quantity:4
+                    stock_quantity:60,
+                    old_price:2399,
+                    sell_price:2199,
+                    selected:true
                 },
                 // 控制小球隐藏和显示的标识符
                 ballFlag: false,
@@ -153,6 +157,18 @@
             },
             addToShopCar() {
                 this.ballFlag = !this.ballFlag;
+                // { id: 商品的 id, count: 要购买的数量, price: 商品的单价, selected: false }
+
+                // 拼接出一个要保存到 store 中 car 数组里的 商品信息对象
+                var goodsinfo = {
+                    id: this.id,
+                    count: this.selectedCount,
+                    price:this.goodsinfo.sell_price,
+                    stock_quantity:this.goodsinfo.stock_quantity,
+                    selected:true
+                };
+                // 调用 store 中的 mutations 来将商品加入购物车中
+                this.$store.commit("addToCar", goodsinfo)
             },
             beforeEnter(el) {
                 el.style.transform="translate(0,0)";
@@ -175,7 +191,7 @@
                 const yDist = badgePosition.top - ballPosition.top;
 
                 el.style.transform=`translate(${xDist}px, ${yDist}px)`;
-                el.style.transition="all 1s cubic-bezier(.4,-0.3,1,.68) ";
+                el.style.transition="all 0.5s cubic-bezier(.4,-0.3,1,.68) ";
                 done();
             },
             afterEnter(el) {
